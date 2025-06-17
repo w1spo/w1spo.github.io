@@ -56,20 +56,29 @@
     }
 }
 
+main {
+  flex: 1; /* zajmuje całą dostępną wysokość oprócz stopki */
+}
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
 
 body {
+  display: flex;
+  flex-direction: column; /* aby main i footer były ułożone pionowo */
+  min-height: 100vh;
   margin: 0;
   background-image: url("images/main/bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  padding-top: 60px;
+  /* usuń justify-content: center */
+  /* padding-top: 60px; - zastanów się, czy jest potrzebne */
   position: relative;
-  min-height: 100vh;
-  overflow: hidden;
 }
 
 .overlay {
