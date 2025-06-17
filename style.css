@@ -1,0 +1,199 @@
+/* Fade-in całego bloku */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Znikanie czarnej nakładki */
+@keyframes fadeOutOverlay {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Animacja pojawiania się nagłówka */
+@keyframes intro_h {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 100%; /* lub dopasuj do szerokości tekstu */
+  }
+}
+
+@keyframes wiggle-sometimes {
+  0%, 87.5%, 100% { transform: rotate(0deg); }
+  12.5% { transform: rotate(-5deg); }
+  25% { transform: rotate(5deg); }
+  37.5% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  62.5% { transform: rotate(0deg); }
+}
+
+/* Animacja pisania dla paragrafu */
+@keyframes intro_p_typing {
+  from { width: 0; }
+  to { width: 31ch; } /* odsłania 62 znaki */
+}
+
+/* Migający kursor */
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+  100% { border-color: white; }
+}
+
+@keyframes pfp_anim {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+body {
+  margin: 0;
+  background-image: url("images/main/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  z-index: 999;
+  animation: fadeOutOverlay 3s ease forwards;
+}
+
+.intro_block {
+  background-color: rgba(31, 39, 44, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  width: 80%;
+  max-width: 1800px;
+  margin: 120px auto 0 auto;
+  height: 999px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.intro_container {
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* obok siebie */
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+/* animacja pisania dla paragrafu */
+.intro_p_typing {
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  width: 0;
+  color: white;
+  animation:
+    intro_p_typing 4s steps(62, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+/* animacja pojawiania dla nagłówka */
+.h_fadein {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: none; /* brak kursora */
+  width: 100%;
+  opacity: 0;
+  animation: intro_h 1s forwards;
+  animation-delay: 4s;
+}
+
+.h3_nospace {
+  margin: 0;
+  padding: 0;
+  color: rgb(180, 180, 180);
+}
+
+.custom-button {
+  margin-top: 120px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: cyan;
+  border: 2px solid cyan;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: rgba(0, 0, 0, 0.623);
+  color: white;
+}
+
+.profile-photo {
+  width: 512px;
+  height: 512px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-left: 40px;
+  
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+}
+
+
+.text-content {
+  flex: 1;
+}
+
+.intro_text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+/* Fade-in po 4s */
+.fade-in-delayed {
+  opacity: 0;
+  animation: pfp_anim 1s ease-out 4s forwards;
+}
+
+/* Wiggle i fade-in razem */
+.wiggle-delayed {
+  opacity: 0;
+  animation:
+    pfp_anim 1s ease-out 4s forwards,
+    wiggle-sometimes 10s ease-in-out 6s infinite;
+}
+
