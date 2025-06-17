@@ -88,6 +88,8 @@ body {
   max-width: 1800px;
   margin: 120px auto 0 auto;
   height: 999px;
+  /* height: 999px;  <-- usuń tę linię */
+  min-height: 600px; /* opcjonalnie minimalna wysokość na desktop */
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -158,6 +160,9 @@ body {
 .profile-photo {
   width: 512px;
   height: 512px;
+  max-width: 512px;
+  width: 100%; /* dostosowuje się do kontenera */
+  height: auto;
   object-fit: cover;
   border-radius: 14px;
   margin-left: 40px;
@@ -170,6 +175,7 @@ body {
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
 }
+
 
 
 .text-content {
@@ -195,5 +201,57 @@ body {
   animation:
     pfp_anim 1s ease-out 4s forwards,
     wiggle-sometimes 10s ease-in-out 6s infinite;
+}
+
+@media (max-width: 768px) {
+  .intro_container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .profile-photo {
+    width: 80vw;
+    height: auto;
+    margin: 20px 0 0 0;
+    margin-left: 0 !important; /* dodać by nadpisać */
+  }
+
+  .custom-button {
+    margin-top: 40px;
+  }
+
+  .intro_block {
+    height: auto;
+    margin: 40px auto 20px auto;
+    width: 90%;
+    min-height: auto; /* albo zmniejszyć */
+  }
+  
+  .intro_text {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .intro_p_typing,
+  .h_fadein {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, h2, h3, h4, h5, h6 {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    margin: 10px 0;
+    font-size: medium;
+
+  }
 }
 
