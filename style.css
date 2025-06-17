@@ -1,11 +1,10 @@
-/* Fade-in całego bloku */
+/* Animacje */
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
 
-/* Znikanie czarnej nakładki */
 @keyframes fadeOutOverlay {
   to {
     opacity: 0;
@@ -13,7 +12,6 @@
   }
 }
 
-/* Animacja pojawiania się nagłówka */
 @keyframes intro_h {
   from {
     opacity: 0;
@@ -34,41 +32,25 @@
   62.5% { transform: rotate(0deg); }
 }
 
-/* Animacja pisania dla paragrafu */
 @keyframes intro_p_typing {
   from { width: 0; }
-  to { width: 31ch; } /* odsłania 62 znaki */
+  to { width: 31ch; }
 }
 
-/* Migający kursor */
 @keyframes blink-caret {
   50% { border-color: transparent; }
   100% { border-color: white; }
 }
 
 @keyframes pfp_anim {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-main {
-  flex: 1; /* zajmuje całą dostępną wysokość oprócz stopki */
-}
-footer {
-  background-color: #222;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-}
-
+/* Podstawowe style */
 body {
   display: flex;
-  flex-direction: column; /* aby main i footer były ułożone pionowo */
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
   background-image: url("images/main/bg.jpg");
@@ -76,9 +58,18 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   font-family: Arial, sans-serif;
-  /* usuń justify-content: center */
-  /* padding-top: 60px; - zastanów się, czy jest potrzebne */
   position: relative;
+}
+
+main {
+  flex: 1; /* zajmuje całą dostępną wysokość oprócz stopki */
+}
+
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
 }
 
 .overlay {
@@ -96,9 +87,7 @@ body {
   width: 80%;
   max-width: 1800px;
   margin: 120px auto 0 auto;
-  height: 999px;
-  /* height: 999px;  <-- usuń tę linię */
-  min-height: 600px; /* opcjonalnie minimalna wysokość na desktop */
+  min-height: 600px; /* minimalna wysokość na desktop */
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -110,15 +99,20 @@ body {
 .intro_container {
   height: 100%;
   display: flex;
-  flex-direction: row; /* obok siebie */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px;
 }
 
+.intro_text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-/* animacja pisania dla paragrafu */
+/* Animacje tekstowe */
 .intro_p_typing {
   font-family: monospace;
   white-space: nowrap;
@@ -131,12 +125,11 @@ body {
     blink-caret 0.75s step-end infinite;
 }
 
-/* animacja pojawiania dla nagłówka */
 .h_fadein {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   white-space: nowrap;
   overflow: hidden;
-  border-right: none; /* brak kursora */
+  border-right: none;
   width: 100%;
   opacity: 0;
   animation: intro_h 1s forwards;
@@ -149,6 +142,7 @@ body {
   color: rgb(180, 180, 180);
 }
 
+/* Przycisk */
 .custom-button {
   margin-top: 120px;
   padding: 10px 20px;
@@ -166,45 +160,25 @@ body {
   color: white;
 }
 
+/* Zdjęcie profilowe */
 .profile-photo {
   width: 512px;
-  height: 512px;
   max-width: 512px;
-  width: 100%; /* dostosowuje się do kontenera */
+  width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 14px;
   margin-left: 40px;
-  
   opacity: 0;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  animation-delay: 4s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
+  animation: fadeIn 1s ease-out 4s forwards;
 }
 
-
-
-.text-content {
-  flex: 1;
-}
-
-.intro_text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-}
-
-/* Fade-in po 4s */
+/* Efekty fade-in */
 .fade-in-delayed {
   opacity: 0;
   animation: pfp_anim 1s ease-out 4s forwards;
 }
 
-/* Wiggle i fade-in razem */
 .wiggle-delayed {
   opacity: 0;
   animation:
@@ -212,7 +186,18 @@ body {
     wiggle-sometimes 10s ease-in-out 6s infinite;
 }
 
+/* RESPONSYWNOŚĆ */
+
+/* Dla ekranów do 768px (mobile, tablet) */
 @media (max-width: 768px) {
+  .intro_block {
+    width: 90%;
+    margin: 40px auto 20px;
+    min-height: auto;
+    padding: 15px;
+    border-radius: 15px;
+  }
+
   .intro_container {
     flex-direction: column;
     justify-content: center;
@@ -220,37 +205,32 @@ body {
     padding: 10px;
   }
 
-  .profile-photo {
-    width: 80vw;
-    height: auto;
-    margin: 20px 0 0 0;
-    margin-left: 0 !important; /* dodać by nadpisać */
-  }
-
-  .custom-button {
-    margin-top: 40px;
-  }
-
-  .intro_block {
-    height: auto;
-    margin: 40px auto 20px auto;
-    width: 90%;
-    min-height: auto; /* albo zmniejszyć */
-  }
-  
   .intro_text {
     align-items: center;
     text-align: center;
   }
-  
+
+  .profile-photo {
+    width: 80vw;
+    height: auto;
+    margin: 20px 0 0 0;
+    margin-left: 0 !important;
+  }
+
+  .custom-button {
+    margin-top: 40px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* Tekst i nagłówki łamią się i mieszczą */
   .intro_p_typing,
   .h_fadein {
     white-space: normal;
     word-wrap: break-word;
+    overflow-wrap: break-word;
   }
-}
 
-@media (max-width: 768px) {
   h1, h2, h3, h4, h5, h6 {
     white-space: normal;
     word-wrap: break-word;
@@ -259,8 +239,6 @@ body {
     box-sizing: border-box;
     padding: 0 10px;
     margin: 10px 0;
-    font-size: medium;
-
+    font-size: 1.2rem; /* odpowiednia wielkość na mobile */
   }
 }
-
