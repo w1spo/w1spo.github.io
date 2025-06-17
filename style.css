@@ -256,3 +256,25 @@ footer {
     font-size: 1.2rem; /* odpowiednia wielkość na mobile */
   }
 }
+
+/* Pasek z efektem aero na górze stopki */
+.aero-top-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px; /* wysokość „aero” paska */
+  background: rgba(0, 255, 255, 0.418); /* lekko przezroczyste białe tło */
+  backdrop-filter: blur(20px); /* efekt rozmycia tła */
+  -webkit-backdrop-filter: blur(20px); /* wsparcie dla Safari */
+  border-top-left-radius: 8px;  /* jeśli chcesz zaokrąglić krawędzie */
+  border-top-right-radius: 8px;
+  z-index: 1;
+}
+
+/* Żeby treść stopki nie nachodziła na ten pasek */
+.footer-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 10px; /* tak, by nie przykrywać aero-top-edge */
+}
