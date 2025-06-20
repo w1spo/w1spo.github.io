@@ -69,6 +69,7 @@ main {
   flex: 1; /* zajmuje całą dostępną wysokość oprócz stopki */
 }
 
+
 footer {
   background-color: #222222ab;
   backdrop-filter: blur(20px);
