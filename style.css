@@ -264,7 +264,7 @@ footer {
   left: 0;
   right: 0;
   height: 10px; /* wysokość „aero” paska */
-  background: rgba(0, 255, 255, 0.418); /* lekko przezroczyste białe tło */
+  background: #00ffff6b; /* lekko przezroczyste białe tło */
   backdrop-filter: blur(20px); /* efekt rozmycia tła */
   -webkit-backdrop-filter: blur(20px); /* wsparcie dla Safari */
   border-top-left-radius: 8px;  /* jeśli chcesz zaokrąglić krawędzie */
@@ -277,4 +277,32 @@ footer {
   position: relative;
   z-index: 2;
   margin-top: 10px; /* tak, by nie przykrywać aero-top-edge */
+}
+
+.zoom-tilt {
+      width: 700px;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 20px auto;
+}
+
+.zoom-tilt:hover {
+      transform: scale(1.1) rotateZ(2deg);
+}
+
+.social-container {
+    display: flex;
+    gap: 20px; /* automatyczne odstępy między ikonami */
+}
+
+.social-icon {
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    color: #00ffff;
+    transform: scale(1.2) rotate(-5deg);
 }
