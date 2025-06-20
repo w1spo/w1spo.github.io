@@ -200,7 +200,7 @@ footer {
   opacity: 0;
   animation:
     pfp_anim 1s ease-out 4s forwards,
-    wiggle-sometimes 10s ease-in-out 6s infinite;
+    /* wiggle-sometimes 10s ease-in-out 6s infinite; */
 }
 
 /* RESPONSYWNOŚĆ */
@@ -333,4 +333,9 @@ footer {
   opacity: 0;
   animation: intro_h 1s forwards;
   animation-delay: 4s;
+}
+
+.buttons_container {
+  display: flex;
+  gap: 10px;
 }
