@@ -98,9 +98,9 @@ footer {
   background-color: rgba(31, 39, 44, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  width: 80%;
-  max-width: 1800px;
-  margin: 120px auto 0 auto;
+  max-width: 1900px;
+  width: 120%;
+  margin: 0 auto;
   min-height: 600px; /* minimalna wysokość na desktop */
   padding: 20px;
   border-radius: 20px;
@@ -156,29 +156,29 @@ footer {
   color: rgb(180, 180, 180);
 }
 
-/* Przycisk */
 .custom-button {
   margin-top: 120px;
   padding: 10px 20px;
   background-color: transparent;
-  color: cyan;
-  border: 2px solid cyan;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease;
 }
 
 .custom-button:hover {
-  background-color: rgba(0, 0, 0, 0.623);
+  background-color: #0000007e;
   color: white;
+  font-size: 19px;
 }
+
 
 /* Zdjęcie profilowe */
 .profile-photo {
-  width: 512px;
+  width: 50%;
   max-width: 512px;
-  width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 14px;
@@ -186,6 +186,8 @@ footer {
   opacity: 0;
   animation: fadeIn 1s ease-out 4s forwards;
 }
+
+
 
 /* Efekty fade-in */
 .fade-in-delayed {
@@ -225,10 +227,11 @@ footer {
   }
 
   .profile-photo {
-    width: 80vw;
-    height: auto;
-    margin: 20px 0 0 0;
-    margin-left: 0 !important;
+  width: 40vw;
+  max-width: 90vw; /* dodatkowo ogranicza na bardzo małych ekranach */
+  height: auto;
+  margin: 20px 0 0 0;
+  margin-left: 0 !important;
   }
 
   .custom-button {
@@ -254,6 +257,24 @@ footer {
     padding: 0 10px;
     margin: 10px 0;
     font-size: 1.2rem; /* odpowiednia wielkość na mobile */
+  }
+
+  .social-container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .zoom-tilt {
+      width: 256px;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 10px auto;
+      align-items: center;
+  }
+
+  .zoom-tilt:hover {
+      transform: scale(1.05) rotateZ(2deg);
+      align-items: center;
   }
 }
 
