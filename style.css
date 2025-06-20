@@ -1,0 +1,314 @@
+/* Animacje */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutOverlay {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes intro_h {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 100%; /* lub dopasuj do szerokości tekstu */
+  }
+}
+
+@keyframes wiggle-sometimes {
+  0%, 87.5%, 100% { transform: rotate(0deg); }
+  12.5% { transform: rotate(-5deg); }
+  25% { transform: rotate(5deg); }
+  37.5% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  62.5% { transform: rotate(0deg); }
+}
+
+@keyframes intro_p_typing {
+  from { width: 0; }
+  to { width: 31ch; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+  100% { border-color: white; }
+}
+
+@keyframes pfp_anim {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@font-face {
+  font-family: PixelFont;
+  src: url(fonts/pixel.ttf);
+}
+/* Podstawowe style */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url("images/main/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+main {
+  flex: 1; /* zajmuje całą dostępną wysokość oprócz stopki */
+}
+
+footer {
+  background-color: #222222ab;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-family: PixelFont;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.7)
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  z-index: 999;
+  animation: fadeOutOverlay 3s ease forwards;
+}
+
+.intro_block {
+  background-color: rgba(31, 39, 44, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  width: 80%;
+  max-width: 1800px;
+  margin: 120px auto 0 auto;
+  min-height: 600px; /* minimalna wysokość na desktop */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.intro_container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.intro_text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Animacje tekstowe */
+.intro_p_typing {
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  width: 0;
+  color: white;
+  animation:
+    intro_p_typing 4s steps(62, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+.h_fadein {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: none;
+  width: 100%;
+  opacity: 0;
+  animation: intro_h 1s forwards;
+  animation-delay: 4s;
+}
+
+.h3_nospace {
+  margin: 0;
+  padding: 0;
+  color: rgb(180, 180, 180);
+}
+
+/* Przycisk */
+.custom-button {
+  margin-top: 120px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: cyan;
+  border: 2px solid cyan;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: rgba(0, 0, 0, 0.623);
+  color: white;
+}
+
+/* Zdjęcie profilowe */
+.profile-photo {
+  width: 512px;
+  max-width: 512px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-left: 40px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 4s forwards;
+}
+
+/* Efekty fade-in */
+.fade-in-delayed {
+  opacity: 0;
+  animation: pfp_anim 1s ease-out 4s forwards;
+}
+
+.wiggle-delayed {
+  opacity: 0;
+  animation:
+    pfp_anim 1s ease-out 4s forwards,
+    wiggle-sometimes 10s ease-in-out 6s infinite;
+}
+
+/* RESPONSYWNOŚĆ */
+
+/* Dla ekranów do 768px (mobile, tablet) */
+@media (max-width: 768px) {
+  .intro_block {
+    width: 90%;
+    margin: 40px auto 20px;
+    min-height: auto;
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .intro_container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .intro_text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 80vw;
+    height: auto;
+    margin: 20px 0 0 0;
+    margin-left: 0 !important;
+  }
+
+  .custom-button {
+    margin-top: 40px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* Tekst i nagłówki łamią się i mieszczą */
+  .intro_p_typing,
+  .h_fadein {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    margin: 10px 0;
+    font-size: 1.2rem; /* odpowiednia wielkość na mobile */
+  }
+}
+
+/* Pasek z efektem aero na górze stopki */
+.aero-top-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px; /* wysokość „aero” paska */
+  background: #00ffff6b; /* lekko przezroczyste białe tło */
+  backdrop-filter: blur(20px); /* efekt rozmycia tła */
+  -webkit-backdrop-filter: blur(20px); /* wsparcie dla Safari */
+  border-top-left-radius: 8px;  /* jeśli chcesz zaokrąglić krawędzie */
+  border-top-right-radius: 8px;
+  z-index: 1;
+}
+
+/* Żeby treść stopki nie nachodziła na ten pasek */
+.footer-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 10px; /* tak, by nie przykrywać aero-top-edge */
+}
+
+.zoom-tilt {
+      width: 700px;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 20px auto;
+}
+
+.zoom-tilt:hover {
+      transform: scale(1.1) rotateZ(2deg);
+}
+
+.social-container {
+    display: flex;
+    gap: 20px; /* automatyczne odstępy między ikonami */
+}
+
+.social-icon {
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    color: #00ffff;
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.social_fade {
+  opacity: 0;
+  animation: intro_h 1s forwards;
+  animation-delay: 4s;
+}
