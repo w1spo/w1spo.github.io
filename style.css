@@ -306,3 +306,9 @@ footer {
     color: #00ffff;
     transform: scale(1.2) rotate(-5deg);
 }
+
+.social_fade {
+  opacity: 0;
+  animation: intro_h 1s forwards;
+  animation-delay: 4s;
+}
